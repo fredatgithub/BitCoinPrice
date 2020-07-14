@@ -1,4 +1,5 @@
 #define DEBUG
+using BitCoinExchangeRate.Controller;
 using BitCoinExchangeRate.Model;
 using BitCoinExchangeRate.Properties;
 using Newtonsoft.Json;
@@ -717,13 +718,7 @@ namespace BitCoinExchangeRate
 
     private void ButtonGetRate_Click(object sender, EventArgs e)
     {
-      //https://api.coindesk.com/v1/bpi/currentprice.json
       string apiUrl = "https://api.coindesk.com/v1/bpi/currentprice.json";
-      //textBoxResult.Text = GetAPIFromUrl("https://api.coindesk.com/v1/bpi/currentprice.json");
-      //https://www.dictionnaire-academie.fr/article/A9P4366
-      //https://www.dictionnaire-academie.fr/article/A9A0001
-      //https://www.dictionnaire-academie.fr/article/A8Z0001
-      //"https://www.dictionnaire-academie.fr/article/A9P4366"
       var myJsonResponse = GetAPIFromUrl(apiUrl);
       textBoxResult.Text = myJsonResponse;
       // parse Json response
@@ -736,9 +731,13 @@ namespace BitCoinExchangeRate
       textBoxResult.Text += $"EUR : {rateEuros}{Environment.NewLine}";
       textBoxResult.Text += $"USD : {rateDollar}{Environment.NewLine}";
       // get latest record
-
+      var latestDate = DALHelper.GetLatestDate();
+      DateTime latestDateFromDB = DateTime.Parse(latestDate);
       // commit new rates if not recorded yet.
+      if (latestDateFromDB < DateTime.Now.AddMinutes(-10))
+      {
 
+      }
     }
 
     public static string GetAPIFromUrl(string url)
