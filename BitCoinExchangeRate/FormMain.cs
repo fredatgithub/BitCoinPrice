@@ -728,13 +728,17 @@ namespace BitCoinExchangeRate
       textBoxResult.Text = myJsonResponse;
       // parse Json response
       Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-      DateTime theDate = myDeserializedClass.time.updatedISO;
-      double rateEuros = myDeserializedClass.bpi.EUR.rate_float;
-      double rateDollar = myDeserializedClass.bpi.USD.rate_float;
+      DateTime theDate = myDeserializedClass.Time.UpdatedISO;
+      double rateEuros = myDeserializedClass.Bpi.EUR.Rate_float;
+      double rateDollar = myDeserializedClass.Bpi.USD.Rate_float;
       textBoxResult.Text += Environment.NewLine;
       textBoxResult.Text += $"Date : {theDate}{Environment.NewLine}";
       textBoxResult.Text += $"EUR : {rateEuros}{Environment.NewLine}";
       textBoxResult.Text += $"USD : {rateDollar}{Environment.NewLine}";
+      // get latest record
+
+      // commit new rates if not recorded yet.
+
     }
 
     public static string GetAPIFromUrl(string url)

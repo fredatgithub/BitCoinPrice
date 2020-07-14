@@ -5,39 +5,39 @@ namespace BitCoinExchangeRate.Model
   // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
   public class Time
   {
-    public string updated { get; set; }
-    public DateTime updatedISO { get; set; }
-    public string updateduk { get; set; }
+    public string Updated { get; set; }
+    public DateTime UpdatedISO { get; set; }
+    public string Updateduk { get; set; }
 
   }
 
   public class USD
   {
-    public string code { get; set; }
-    public string symbol { get; set; }
-    public string rate { get; set; }
-    public string description { get; set; }
-    public double rate_float { get; set; }
+    public string Code { get; set; }
+    public string Symbol { get; set; }
+    public string Rate { get; set; }
+    public string Description { get; set; }
+    public double Rate_float { get; set; }
 
   }
 
   public class GBP
   {
-    public string code { get; set; }
-    public string symbol { get; set; }
-    public string rate { get; set; }
-    public string description { get; set; }
-    public double rate_float { get; set; }
+    public string Code { get; set; }
+    public string Symbol { get; set; }
+    public string Rate { get; set; }
+    public string Description { get; set; }
+    public double Rate_float { get; set; }
 
   }
 
   public class EUR
   {
-    public string code { get; set; }
-    public string symbol { get; set; }
-    public string rate { get; set; }
-    public string description { get; set; }
-    public double rate_float { get; set; }
+    public string Code { get; set; }
+    public string Symbol { get; set; }
+    public string Rate { get; set; }
+    public string Description { get; set; }
+    public double Rate_float { get; set; }
 
   }
 
@@ -51,10 +51,9 @@ namespace BitCoinExchangeRate.Model
 
   public class Root
   {
-    public Time time { get; set; }
-    public string disclaimer { get; set; }
-    public string chartName { get; set; }
-    public Bpi bpi { get; set; }
-
+    public Time Time { get; set; }
+    public string Disclaimer { get; set; }
+    public string ChartName { get; set; }
+    public Bpi Bpi { get; set; }
   }
 }

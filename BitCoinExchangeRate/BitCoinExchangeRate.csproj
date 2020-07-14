@@ -61,6 +61,7 @@
       <DependentUpon>AboutBoxApplication.cs</DependentUpon>
     </Compile>
     <Compile Include="ConfigurationOptions.cs" />
+    <Compile Include="Controller\DALHelper.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
