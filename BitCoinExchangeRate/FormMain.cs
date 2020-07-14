@@ -720,7 +720,7 @@ namespace BitCoinExchangeRate
     {
       string apiUrl = "https://api.coindesk.com/v1/bpi/currentprice.json";
       var myJsonResponse = GetAPIFromUrl(apiUrl);
-      textBoxResult.Text = myJsonResponse;
+      //textBoxResult.Text = myJsonResponse;
       // parse Json response
       Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
       DateTime theDate = myDeserializedClass.Time.UpdatedISO;
@@ -734,9 +734,10 @@ namespace BitCoinExchangeRate
       var latestDate = DALHelper.GetLatestDate();
       DateTime latestDateFromDB = DateTime.Parse(latestDate);
       // commit new rates if not recorded yet.
-      if (latestDateFromDB < DateTime.Now.AddMinutes(-10))
+      bool insertResult = false;
+      if (latestDateFromDB < DateTime.Now.AddMinutes(-1))
       {
-
+        insertResult = DALHelper.WriteToDatabase(theDate, rateEuros, rateDollar);
       }
     }
 
@@ -756,6 +757,12 @@ namespace BitCoinExchangeRate
       reader.Close();
       response.Close();
       return responseFromServer;
+    }
+
+    private void TimerRequest_Tick(object sender, EventArgs e)
+    {
+      ButtonGetRate_Click(sender, e);
+      textBoxTimer.Text += $"{Environment.NewLine}{DateTime.Now.ToLongTimeString()}";
     }
   }
 }
