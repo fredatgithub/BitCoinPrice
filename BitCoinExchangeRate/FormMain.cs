@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -719,7 +718,7 @@ namespace BitCoinExchangeRate
     private void ButtonGetRate_Click(object sender, EventArgs e)
     {
       string apiUrl = "https://api.coindesk.com/v1/bpi/currentprice.json";
-      var myJsonResponse = GetAPIFromUrl(apiUrl);
+      var myJsonResponse = InternetHelper.GetAPIFromUrl(apiUrl);
       //textBoxResult.Text = myJsonResponse;
       // parse Json response
       Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
@@ -739,24 +738,6 @@ namespace BitCoinExchangeRate
       {
         insertResult = DALHelper.WriteToDatabase(theDate, rateEuros, rateDollar);
       }
-    }
-
-    public static string GetAPIFromUrl(string url)
-    {
-      ServicePointManager.Expect100Continue = true;
-      ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
-             | SecurityProtocolType.Tls11
-             | SecurityProtocolType.Tls12
-             | SecurityProtocolType.Ssl3;
-
-      WebRequest request = (HttpWebRequest)WebRequest.Create(url);
-      WebResponse response = request.GetResponse();
-      Stream dataStream = response.GetResponseStream();
-      StreamReader reader = new StreamReader(dataStream);
-      string responseFromServer = reader.ReadToEnd();
-      reader.Close();
-      response.Close();
-      return responseFromServer;
     }
 
     private void TimerRequest_Tick(object sender, EventArgs e)
