@@ -53,6 +53,7 @@ namespace BitCoinExchangeRate
     private void FormMainLoad(object sender, EventArgs e)
     {
       LoadSettingsAtStartup();
+      ButtonGetRate_Click(sender, e);
     }
 
     private void LoadSettingsAtStartup()
