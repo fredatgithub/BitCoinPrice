@@ -69,8 +69,6 @@
       this.buttonGetRate = new System.Windows.Forms.Button();
       this.textBoxResult = new System.Windows.Forms.TextBox();
       this.timerRequest = new System.Windows.Forms.Timer(this.components);
-      this.textBoxTimer = new System.Windows.Forms.TextBox();
-      this.labelTimer = new System.Windows.Forms.Label();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -87,7 +85,7 @@
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
       this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-      this.menuStrip1.Size = new System.Drawing.Size(895, 24);
+      this.menuStrip1.Size = new System.Drawing.Size(449, 24);
       this.menuStrip1.TabIndex = 1;
       this.menuStrip1.Text = "menuStrip1";
       // 
@@ -382,11 +380,12 @@
       // 
       // textBoxResult
       // 
-      this.textBoxResult.Location = new System.Drawing.Point(38, 108);
+      this.textBoxResult.Dock = System.Windows.Forms.DockStyle.Bottom;
+      this.textBoxResult.Location = new System.Drawing.Point(0, 120);
       this.textBoxResult.Multiline = true;
       this.textBoxResult.Name = "textBoxResult";
       this.textBoxResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-      this.textBoxResult.Size = new System.Drawing.Size(252, 512);
+      this.textBoxResult.Size = new System.Drawing.Size(449, 512);
       this.textBoxResult.TabIndex = 4;
       // 
       // timerRequest
@@ -395,31 +394,11 @@
       this.timerRequest.Interval = 60000;
       this.timerRequest.Tick += new System.EventHandler(this.TimerRequest_Tick);
       // 
-      // textBoxTimer
-      // 
-      this.textBoxTimer.Location = new System.Drawing.Point(312, 108);
-      this.textBoxTimer.Multiline = true;
-      this.textBoxTimer.Name = "textBoxTimer";
-      this.textBoxTimer.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-      this.textBoxTimer.Size = new System.Drawing.Size(252, 512);
-      this.textBoxTimer.TabIndex = 5;
-      // 
-      // labelTimer
-      // 
-      this.labelTimer.AutoSize = true;
-      this.labelTimer.Location = new System.Drawing.Point(312, 73);
-      this.labelTimer.Name = "labelTimer";
-      this.labelTimer.Size = new System.Drawing.Size(78, 13);
-      this.labelTimer.TabIndex = 6;
-      this.labelTimer.Text = "Time recorded:";
-      // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(895, 632);
-      this.Controls.Add(this.labelTimer);
-      this.Controls.Add(this.textBoxTimer);
+      this.ClientSize = new System.Drawing.Size(449, 632);
       this.Controls.Add(this.textBoxResult);
       this.Controls.Add(this.buttonGetRate);
       this.Controls.Add(this.menuStrip1);
@@ -479,7 +458,5 @@
     private System.Windows.Forms.Button buttonGetRate;
     private System.Windows.Forms.TextBox textBoxResult;
     private System.Windows.Forms.Timer timerRequest;
-    private System.Windows.Forms.TextBox textBoxTimer;
-    private System.Windows.Forms.Label labelTimer;
   }
 }

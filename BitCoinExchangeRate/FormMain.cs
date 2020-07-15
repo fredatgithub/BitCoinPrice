@@ -762,7 +762,6 @@ namespace BitCoinExchangeRate
     private void TimerRequest_Tick(object sender, EventArgs e)
     {
       ButtonGetRate_Click(sender, e);
-      textBoxTimer.Text += $"{Environment.NewLine}{DateTime.Now.ToLongTimeString()}";
     }
   }
 }
