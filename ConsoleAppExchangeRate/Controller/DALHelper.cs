@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 
-namespace BitCoinExchangeRate.Controller
+namespace ConsoleAppExchangeRate.Controller
 {
   public static class DALHelper
   {
@@ -36,7 +35,7 @@ namespace BitCoinExchangeRate.Controller
         }
         catch (Exception exception)
         {
-          MessageBox.Show(exception.Message);
+          Console.WriteLine(exception.Message);
         }
         finally
         {
