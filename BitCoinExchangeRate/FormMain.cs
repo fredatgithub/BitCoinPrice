@@ -728,9 +728,9 @@ namespace BitCoinExchangeRate
       double rateEuros = myDeserializedClass.Bpi.EUR.Rate_float;
       double rateDollar = myDeserializedClass.Bpi.USD.Rate_float;
       textBoxResult.Text += Environment.NewLine;
-      textBoxResult.Text += $"Date : {theDate}{Environment.NewLine}";
-      textBoxResult.Text += $"EUR : {rateEuros}{Environment.NewLine}";
-      textBoxResult.Text += $"USD : {rateDollar}{Environment.NewLine}";
+      textBoxResult.Text += $"Date : {theDate} - EUR : {rateEuros}{Environment.NewLine}";
+      //textBoxResult.Text += $"EUR : {rateEuros}{Environment.NewLine}";
+      //textBoxResult.Text += $"USD : {rateDollar}{Environment.NewLine}";
       // get latest record
       var latestDate = DALHelper.GetLatestDate();
       DateTime latestDateFromDB = DateTime.Parse(latestDate);

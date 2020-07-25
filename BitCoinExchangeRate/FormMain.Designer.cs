@@ -376,16 +376,20 @@
       this.buttonGetRate.TabIndex = 2;
       this.buttonGetRate.Text = "Get";
       this.buttonGetRate.UseVisualStyleBackColor = true;
+      this.buttonGetRate.Visible = false;
       this.buttonGetRate.Click += new System.EventHandler(this.ButtonGetRate_Click);
       // 
       // textBoxResult
       // 
-      this.textBoxResult.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.textBoxResult.Location = new System.Drawing.Point(0, 120);
+      this.textBoxResult.BackColor = System.Drawing.SystemColors.WindowText;
+      this.textBoxResult.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.textBoxResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.textBoxResult.ForeColor = System.Drawing.SystemColors.Window;
+      this.textBoxResult.Location = new System.Drawing.Point(0, 24);
       this.textBoxResult.Multiline = true;
       this.textBoxResult.Name = "textBoxResult";
       this.textBoxResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-      this.textBoxResult.Size = new System.Drawing.Size(449, 512);
+      this.textBoxResult.Size = new System.Drawing.Size(449, 608);
       this.textBoxResult.TabIndex = 4;
       // 
       // timerRequest

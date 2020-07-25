@@ -1,6 +1,7 @@
 ﻿using ConsoleAppExchangeRate.Controller;
 using Newtonsoft.Json;
 using System;
+using System.Threading;
 
 namespace ConsoleAppExchangeRate
 {
@@ -19,15 +20,24 @@ namespace ConsoleAppExchangeRate
       display(Environment.NewLine);
       display($"Date : {theDate}{Environment.NewLine}");
       display($"EUR : {rateEuros}{Environment.NewLine}");
-      display($"USD : {rateDollar}{Environment.NewLine}");
+      //display($"USD : {rateDollar}{Environment.NewLine}");
       // get latest record
       var latestDate = DALHelper.GetLatestDate();
       DateTime latestDateFromDB = DateTime.Parse(latestDate);
       // commit new rates if not recorded yet.
       bool insertResult = false;
-      if (latestDateFromDB < DateTime.Now.AddMinutes(-1))
+      while (true)
       {
-        insertResult = DALHelper.WriteToDatabase(theDate, rateEuros, rateDollar);
+        latestDate = DALHelper.GetLatestDate();
+        latestDateFromDB = DateTime.Parse(latestDate);
+
+        if (latestDateFromDB < DateTime.Now.AddMinutes(-1))
+        {
+          insertResult = DALHelper.WriteToDatabase(theDate, rateEuros, rateDollar);
+          display($"Date: {theDate} - the rate: {rateEuros}");
+        }
+
+        Thread.Sleep(1000 * 60);
       }
     }
   }
