@@ -17,7 +17,7 @@ namespace ConsoleAppExchangeRate
       DateTime theDate = myDeserializedClass.Time.UpdatedISO;
       double rateEuros = myDeserializedClass.Bpi.EUR.Rate_float;
       double rateDollar = myDeserializedClass.Bpi.USD.Rate_float;
-      display(Environment.NewLine);
+      //display(Environment.NewLine);
       display($"Date : {theDate}{Environment.NewLine}");
       display($"EUR : {rateEuros}{Environment.NewLine}");
       //display($"USD : {rateDollar}{Environment.NewLine}");
@@ -28,13 +28,21 @@ namespace ConsoleAppExchangeRate
       bool insertResult = false;
       while (true)
       {
+        myJsonResponse = InternetHelper.GetAPIFromUrl(apiUrl);
+        myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+        theDate = myDeserializedClass.Time.UpdatedISO;
+        rateEuros = myDeserializedClass.Bpi.EUR.Rate_float;
+        rateDollar = myDeserializedClass.Bpi.USD.Rate_float;
+        //display(Environment.NewLine);
+        display($"Date : {theDate}{Environment.NewLine}");
+        display($"EUR : {rateEuros}{Environment.NewLine}");
         latestDate = DALHelper.GetLatestDate();
         latestDateFromDB = DateTime.Parse(latestDate);
 
         if (latestDateFromDB < DateTime.Now.AddMinutes(-1))
         {
           insertResult = DALHelper.WriteToDatabase(theDate, rateEuros, rateDollar);
-          display($"Date: {theDate} - the rate: {rateEuros}");
+          //display($"Date: {theDate} - the rate: {rateEuros}");
         }
 
         Thread.Sleep(1000 * 60);

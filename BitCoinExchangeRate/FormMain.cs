@@ -727,7 +727,7 @@ namespace BitCoinExchangeRate
       DateTime theDate = myDeserializedClass.Time.UpdatedISO;
       double rateEuros = myDeserializedClass.Bpi.EUR.Rate_float;
       double rateDollar = myDeserializedClass.Bpi.USD.Rate_float;
-      textBoxResult.Text += Environment.NewLine;
+      //textBoxResult.Text += Environment.NewLine;
       textBoxResult.Text += $"Date : {theDate} - EUR : {rateEuros}{Environment.NewLine}";
       //textBoxResult.Text += $"EUR : {rateEuros}{Environment.NewLine}";
       //textBoxResult.Text += $"USD : {rateDollar}{Environment.NewLine}";
