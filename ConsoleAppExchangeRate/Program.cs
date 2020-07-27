@@ -29,14 +29,13 @@ namespace ConsoleAppExchangeRate
         theDate = myDeserializedClass.Time.UpdatedISO;
         rateEuros = myDeserializedClass.Bpi.EUR.Rate_float;
         rateDollar = myDeserializedClass.Bpi.USD.Rate_float;
-        display($"Date : {theDate} - EUR : {rateEuros}{Environment.NewLine}");
+        display($"Date : {theDate} - EUR : {rateEuros}");
         latestDate = DALHelper.GetLatestDate();
         latestDateFromDB = DateTime.Parse(latestDate);
 
         if (latestDateFromDB < DateTime.Now.AddMinutes(-1))
         {
           insertResult = DALHelper.WriteToDatabase(theDate, rateEuros, rateDollar);
-          //display($"Date: {theDate} - the rate: {rateEuros}");
         }
 
         Thread.Sleep(1000 * 60);
