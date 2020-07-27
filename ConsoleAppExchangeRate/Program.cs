@@ -16,8 +16,6 @@ namespace ConsoleAppExchangeRate
       DateTime theDate = myDeserializedClass.Time.UpdatedISO;
       double rateEuros = myDeserializedClass.Bpi.EUR.Rate_float;
       double rateDollar = myDeserializedClass.Bpi.USD.Rate_float;
-      display($"Date : {theDate}{Environment.NewLine}");
-      display($"EUR : {rateEuros}{Environment.NewLine}");
       var latestDate = DALHelper.GetLatestDate();
       DateTime latestDateFromDB = DateTime.Parse(latestDate);
       // commit new rates if not recorded yet.
